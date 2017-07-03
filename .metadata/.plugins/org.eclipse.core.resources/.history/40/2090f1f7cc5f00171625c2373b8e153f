@@ -1,0 +1,12 @@
+
+import com.coinbase.api.Coinbase;
+import com.coinbase.api.CoinbaseBuilder;
+
+public class API {
+
+	public static void main(String args[]) {
+		Coinbase cb = new CoinbaseBuilder()
+                .withApiKey(System.getenv("uYSEHgT38vXCluK8"), System.getenv("BnVcgmzsNaxrQx5gE6shv3nUpP2HtvK7"))
+                .build();
+	}
+}

@@ -1,0 +1,33 @@
+
+import java.awt.PageAttributes.MediaType;
+import java.io.IOException;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import com.coinbase.api.Coinbase;
+import com.coinbase.api.CoinbaseBuilder;
+import com.coinbase.api.entity.Response;
+
+public class API {
+
+	public static void main(String args[]) {
+		Coinbase cb = new CoinbaseBuilder()
+                .withApiKey(System.getenv("uYSEHgT38vXCluK8"), System.getenv("BnVcgmzsNaxrQx5gE6shv3nUpP2HtvK7"))
+                .build();
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		HttpGet httpget = new HttpGet("https://api.coinbase.com/v2/prices/:currency_pair/buy");
+		
+
+		Client client = ClientBuilder.newClient();
+		Response response = (Response) client.target("https://api.coinbase.com/v2/prices/:currency_pair/buy");
+		System.out.println(response);
+	//	  .get();
+	}
+}

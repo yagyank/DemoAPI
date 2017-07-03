@@ -1,0 +1,30 @@
+
+import java.awt.PageAttributes.MediaType;
+import java.io.IOException;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.joda.money.CurrencyUnit;
+
+import com.coinbase.api.Coinbase;
+import com.coinbase.api.CoinbaseBuilder;
+import com.coinbase.api.entity.Response;
+import com.coinbase.api.exception.CoinbaseException;
+import com.coinbase.api.exception.UnspecifiedAccount;
+
+public class API {
+
+	public static void main(String args[]) throws UnspecifiedAccount, IOException, CoinbaseException {
+		Coinbase cb = new CoinbaseBuilder()
+                .withApiKey("uYSEHgT38vXCluK8", "BnVcgmzsNaxrQx5gE6shv3nUpP2HtvK7")
+                .build();
+			System.out.print(cb.getBuyQuote(1000));
+	//	  .get();
+	}
+}
