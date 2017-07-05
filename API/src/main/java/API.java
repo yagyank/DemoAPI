@@ -23,15 +23,20 @@ import com.coinbase.api.exception.UnspecifiedAccount;
 
 public class API {
 
-	public static void main(String args[]) throws UnspecifiedAccount, IOException, CoinbaseException {
+	private static String getBuyCoinBase() throws IOException, CoinbaseException {
 		Coinbase cb = new CoinbaseBuilder()
                 .withApiKey("TdJP32LPFcXdQbbD", "1kzhSNVFoMsLD17h7BFTW5sUKxg97lja")
                 .build();
-		System.out.println(cb.getSpotPrice(CurrencyUnit.SGD));
+		System.out.println(cb.getSpotPrice(CurrencyUnit.USD));
 		Quote q = cb.getBuyQuote(Money.parse("BTC 1"));
 		Map<String, Money> fees = q.getFees();
+		System.out.println(q.getFees());
 		System.out.println(q.getSubtotal());
-		System.out.println(q.getTotal());
-	//	  .get();
+		return q.getTotal().toString();
+	}
+	public static void main(String args[]) throws UnspecifiedAccount, IOException, CoinbaseException {
+		
+	String coinBaseBuy = getBuyCoinBase();
+	System.out.println(coinBaseBuy);
 	}
 }
